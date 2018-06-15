@@ -1,8 +1,9 @@
 .descLegendPanel {
-	width: 200px;
-	border-radius: 0 0 20px 0;
-	max-height: 100%;
-	overflow-y: auto;
+    width: 200px;
+    border-radius: 0 0 20px 0;
+    height: 100%;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 body.has-builder-mask .descLegendPanel {
@@ -10,8 +11,9 @@ body.has-builder-mask .descLegendPanel {
 }
 
 .descLegendPanel .descLegendPanelInner {
-	position: relative;
-	padding: 15px;
+    position: relative;
+    padding: 15px;
+    height: 100%;
 }
 
 .descLegendPanel .backdrop {

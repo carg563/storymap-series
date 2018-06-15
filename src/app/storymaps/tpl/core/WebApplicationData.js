@@ -292,7 +292,10 @@ define(["dojo/_base/lang",
 			getLegendPlacement: function()
 			{
 				return this.getLayoutOptions().legend;
-			},
+            },
+            getLayerListPlacement: function () {
+                return this.getLayoutOptions().layerlist;
+            },
 			getPanelMapOverlap: function()
 			{
 				return this.getLayoutOptions().panelMapOverlap;

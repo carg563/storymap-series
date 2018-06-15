@@ -47,14 +47,16 @@ define(["lib-build/tpl!./WebMapSelector",
 				lblPopup: i18n.commonWebmap.selector.lblPopup,
 				lblControls: i18n.commonWebmap.selector.lblControls,
 				lblOverview: i18n.commonWebmap.selector.lblOverview,
-				lblLegend: i18n.commonWebmap.selector.lblLegend,
+                lblLegend: i18n.commonWebmap.selector.lblLegend,
+                lblLayerList: i18n.commonWebmap.selector.lblLayerList,
 				webmapDefault: i18n.commonWebmap.selector.webmapDefault,
 				customCfg: i18n.commonWebmap.selector.customCfg,
 				tooltipLocation: i18n.commonWebmap.selector.tooltipLocation,
 				tooltipContent: i18n.commonWebmap.selector.tooltipContent,
 				tooltipPopup: i18n.commonWebmap.selector.tooltipPopup,
 				tooltipOverview: i18n.commonWebmap.selector.tooltipOverview,
-				tooltipLegend: i18n.commonWebmap.selector.tooltipLegend,
+                tooltipLegend: i18n.commonWebmap.selector.tooltipLegend,
+                tooltipLayerList: i18n.commonWebmap.selector.tooltipLayerList,
 				mapCfgInvite: i18n.commonWebmap.selector.mapCfgInvite,
 				lblLocationAlt: i18n.commonWebmap.selector.lblLocationAlt,
 				tooltipLocationAlt: i18n.commonWebmap.selector.tooltipLocationAlt
@@ -76,7 +78,8 @@ define(["lib-build/tpl!./WebMapSelector",
 						extent: cfg.media.webmap.extent,
 						layers: cfg.media.webmap.layers,
 						popup:  cfg.media.webmap.popup,
-						legend:  cfg.media.webmap.legend,
+                        legend: cfg.media.webmap.legend,
+                        layerList:cfg.media.webmap.layerList,
 						overview:  cfg.media.webmap.overview
 					};
 
@@ -102,15 +105,18 @@ define(["lib-build/tpl!./WebMapSelector",
 
 				// Extras
 				var enableOverview = false,
-					enableLegend = false;
+                    enableLegend = false,
+                    enableLayerList = false;
 
 				if ( mediaIsWebmap ) {
 					enableOverview = cfg.media.webmap.overview ? cfg.media.webmap.overview.enable : false;
-					enableLegend   = cfg.media.webmap.legend   ? cfg.media.webmap.legend.enable   : false;
+                    enableLegend = cfg.media.webmap.legend ? cfg.media.webmap.legend.enable : false;
+                    enableLayerList = cfg.media.webmap.layerList ? cfg.media.webmap.layerList.enable : false;
 				}
 
 				container.find('.opt-checkbox-overview').prop('checked', enableOverview);
 				container.find('.opt-checkbox-legend').prop('checked', enableLegend);
+                container.find('.opt-checkbox-layerList').prop('checked', enableLayerList);
 
 				container.find('.map-cfg-controls-overview').toggle(! cfg.options.hideOverview);
 
@@ -168,7 +174,11 @@ define(["lib-build/tpl!./WebMapSelector",
 					legend: {
 						enable: container.find('.opt-checkbox-legend').prop('checked'),
 						openByDefault: _mapConfig && _mapConfig.legend ? _mapConfig.legend.openByDefault : false
-					}
+                    },
+                    layerList: {
+                        enable: container.find('.opt-checkbox-layerList').prop('checked'),
+                        openByDefault: _mapConfig && _mapConfig.layerList ? _mapConfig.layerList.openByDefault : false
+                    }
 				};
 
 				if ( ! _cfg.options.hideOverview ) {

@@ -39,10 +39,13 @@ define({
 				attention: "Attention!"
 			},
 			mobileInfo: {
-				legend: "Legend",
+                legend: "Legend",
+                layerList: "Layer List",
 				description: "Description",
 				lblLegendMobileError: "Sorry, the legend is unavailable. Please reload the story.",
-				lblLegendMobileErrorExplain: "The legend is not available when the device is rotated to portrait mode after the story is loaded."
+                lblLegendMobileErrorExplain: "The legend is not available when the device is rotated to portrait mode after the story is loaded.",
+                lblLayerListMobileError: "Sorry, the layer list is unavailable. Please reload the story.",
+                lblLayerListMobileErrorExplain: "The layer list is not available when the device is rotated to portrait mode after the story is loaded."
 			},
 			mobileFooter: {
 				swipeInvite: "Swipe to navigate the story",

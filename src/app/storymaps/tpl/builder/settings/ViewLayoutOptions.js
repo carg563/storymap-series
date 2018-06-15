@@ -27,7 +27,9 @@ define(["lib-build/tpl!./ViewLayoutOptions",
 					lblDescription: i18n.builder.settingsLayoutOptions.lblDescription,
 					// Legend
 					lblLegend: i18n.builder.settingsLayoutOptions.lblLegend,
-					tooltipLegend: i18n.builder.settingsLayoutOptions.tooltipLegend,
+                    tooltipLegend: i18n.builder.settingsLayoutOptions.tooltipLegend,
+                    lblLayerList: i18n.builder.settingsLayoutOptions.lblLayerList,
+                    tooltipLayerList: i18n.builder.settingsLayoutOptions.tooltipLayerList,
 					lblDropdown: i18n.builder.settingsLayoutOptions.lblDropdown,
 					// Panel
 					cfgLeft: i18n.builder.settingsLayoutOptions.cfgLeft,
@@ -50,14 +52,20 @@ define(["lib-build/tpl!./ViewLayoutOptions",
 				
 				settings = settings || {};
 				
-				// Legend for Accordion
-				_contentContainer.find('.opt-checkbox-legend').prop('checked', settings.legend == "dropdown");
+				// Legend, LayerList for Accordion
+                _contentContainer.find('.opt-checkbox-legend').prop('checked', settings.legend == "dropdown");
+                _contentContainer.find('.opt-checkbox-layerList').prop('checked', settings.layerList == "dropdown");
 				
-				// Legend/description for Tab/Bullet
+				// Legend,LayerList /description for Tab/Bullet
 				_contentContainer.find('.opt-checkbox-description').prop('checked', settings.description === true);
 				var targetOption = ["panel", "dropdown"].indexOf(settings.legend);
 				_contentContainer.find('input[name=optionsLegend]').eq(targetOption > 0 ? targetOption : 0).click();
-				
+
+                _contentContainer.find('.opt-checkbox-description').prop('checked', settings.description === true);
+                var targetOption1 = ["panel", "dropdown"].indexOf(settings.layerList);
+                _contentContainer.find('input[name=optionsLayerList]').eq(targetOption1 > 0 ? targetOption1 : 0).click();
+
+
 				// Panel
 				var targetPosition = settings.panel ? settings.panel.position : "left",
 					targetSize = settings.panel ? settings.panel.sizeLbl : "medium";
@@ -143,14 +151,24 @@ define(["lib-build/tpl!./ViewLayoutOptions",
 				_contentContainer.find('.opt-description-container').toggle(! layoutIsAccordion);
 				
 				// Legend
-				_contentContainer.find('.opt-legend-container').toggle(layoutIsTab);
+                _contentContainer.find('.opt-legend-container').toggle(layoutIsTab);
+
+                // LayerList
+                _contentContainer.find('.opt-layerList-container').toggle(layoutIsTab);
 				
 				// Legend naming of first option
 				_contentContainer.find("input[name=optionsLegend]").eq(0).siblings().html(
 					descriptionIsCheched
 						? i18n.builder.settingsLayoutOptions.lblBelowDesc
 						: i18n.builder.settingsLayoutOptions.lblOnPanel
-				);
+                );
+
+                // LayerList naming of first option
+                _contentContainer.find("input[name=optionsLayerList]").eq(0).siblings().html(
+                    descriptionIsCheched
+                        ? i18n.builder.settingsLayoutOptions.lblBelowDesc
+                        : i18n.builder.settingsLayoutOptions.lblOnPanel
+                );
 				
 				// Panel
 				var hasNoPanel = ! layoutIsAccordion 

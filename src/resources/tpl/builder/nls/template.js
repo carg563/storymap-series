@@ -50,7 +50,9 @@ define({
 				lblGeocoder: "Address, Place, and Feature Finder",
 				tooltipGeocoder: "Allow your readers to search for addresses, places, and/or features on your map. Search options can be configured on a web map's item page under Settings > Web Map > Application > Find Locations.",
 				lblSync: "Synchronize map locations",
-				tooltipSync: "When enabled, the initial location of the first map in your series will be applied to all the maps, and navigation by users in any map will be reflected in all maps. Disable for each map's location to remain independent."
+                tooltipSync: "When enabled, the initial location of the first map in your series will be applied to all the maps, and navigation by users in any map will be reflected in all maps. Disable for each map's location to remain independent.",
+                lblLayerList: "Include layer control",
+                tooltipLayerList: "When enabled, user will have a layer list control widget to control the visibility of layers."
 			},
 			settingsThemeOptions: {
 				lblOrgTheme: "Organization Theme",

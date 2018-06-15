@@ -27,14 +27,15 @@ body.layout-accordion:not(.isBuilderLanding) #accordionPanel {
 /*
  * Tab and bullet description
  */
- 
+
 #descLegendPanel {
-	display: none;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	display: none;
-	z-index: 2;
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    z-index: 2;
+    background-color: black;
 }
 
 body.layout-tab:not(.isBuilderLanding) #descLegendPanel,
@@ -74,7 +75,17 @@ body.layout-bullet-right:not(.mobile-view) .esriAttribution {
 body.layout-accordion .mainMediaContainer .legendContainer,
 body.layout-tab .mainMediaContainer .legendContainer,
 body.layout-bullet .mainMediaContainer .legendContainer {
-	right: 20px;
+	right: 330px;
+}
+
+/*
+ * Map controls layer list
+ */
+
+body.layout-accordion .mainMediaContainer .layerListContainer,
+body.layout-tab .mainMediaContainer .layerListContainer,
+body.layout-bullet .mainMediaContainer .layerListContainer {
+    right: 20px;
 }
 
 /*

@@ -63,9 +63,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					webmapid: webmap,
 					isTemporary: true,
 					lblDescription: i18n.viewer.mobileInfo.description,
-					lblLegend: i18n.viewer.mobileInfo.legend,
+                    lblLegend: i18n.viewer.mobileInfo.legend,
+                    lblLayerList: i18n.viewer.mobileInfo.layerList,
 					lblLegendMobileError: i18n.viewer.mobileInfo.lblLegendMobileError,
-					lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain
+                    lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain,
+                    lblLayerListMobileError: i18n.viewer.mobileInfo.lblLayerListMobileError,
+                    lblLayerListMobileErrorExplain: i18n.viewer.mobileInfo.lblLayerListMobileErrorExplain
 				}));
 			}
 
@@ -87,9 +90,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							webmapid: webmap,
 							isTemporary: false,
 							lblDescription: i18n.viewer.mobileInfo.description,
-							lblLegend: i18n.viewer.mobileInfo.legend,
+                            lblLegend: i18n.viewer.mobileInfo.legend,
+                            lblLayerList: i18n.viewer.mobileInfo.layerList,
 							lblLegendMobileError: i18n.viewer.mobileInfo.lblLegendMobileError,
-							lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain
+                            lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain,
+                            lblLayerListMobileError: i18n.viewer.mobileInfo.lblLayerListMobileError,
+                            lblLayerListMobileErrorExplain: i18n.viewer.mobileInfo.lblLayerListMobileErrorExplain
 						}));
 				});
 
@@ -849,7 +855,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					//
 
 					var overviewSettings = media.webmap.overview || {},
-						legendSettings = media.webmap.legend || {},
+                        legendSettings = media.webmap.legend || {},
+                        layerListSettings = media.webmap.layerList || {},
 						globalMapSettings = WebApplicationData.getSettings().mapOptions;
 
 					// If the app use some global Map settings
@@ -861,7 +868,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					// If it's a Main Stage Action, look to use the section Main Stage media
 					//  configuration IF it's a webmap
 					if ( index === null && section.media && section.media.webmap  ) {
-						overviewSettings = section.media.webmap.overview || {},
+                        overviewSettings = section.media.webmap.overview || {},
+                        layerListSettings = media.webmap.layerList || {},
 						legendSettings = section.media.webmap.legend || {};
 					}
 
@@ -875,8 +883,13 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						app.maps[media.webmap.id].legend.toggle(legendSettings.enable);
 						app.maps[media.webmap.id].legend.toggleExpanded(legendSettings.openByDefault);
 						app.maps[media.webmap.id].legend.setSettings(legendSettings);
-					}
+                    }
 
+                    if (layerListSettings.enable !== undefined) {
+                        app.maps[media.webmap.id].layerlist.toggle(layerListSettings.enable);
+                        app.maps[media.webmap.id].layerlist.toggleExpanded(layerListSettings.openByDefault);
+                        app.maps[media.webmap.id].layerlist.setSettings(layerListSettings);
+                    }
 					//
 					// Popup
 					//
@@ -1112,7 +1125,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				if ( app.mapConfig ) {
 					var appColors = app.data.getWebAppData().getColors();
 					app.mapConfig.overview.setColors(appColors);
-					app.mapConfig.legend.setColors(appColors);
+                    app.mapConfig.legend.setColors(appColors);
+                    app.mapConfig.layerlist.setColors(appColors);
 				}
 			}
 
